@@ -72,8 +72,8 @@ export default function Navigation() {
             <span className="px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-xs font-medium text-amber-400">
               EU AI Act Ready
             </span>
-            <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-xs font-medium text-emerald-400">
-              Aug 2026
+            <span className="px-3 py-1 bg-red-500/20 border border-red-500/50 rounded-full text-xs font-medium text-red-400 animate-pulse">
+              Aug 2026 Deadline
             </span>
           </div>
 

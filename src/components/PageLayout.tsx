@@ -37,9 +37,6 @@ export default function PageLayout({ children }: PageLayoutProps) {
               <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-xs font-medium text-emerald-400">
                 Ready for VC Demo
               </span>
-              <span className="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-xs font-medium text-blue-400">
-                Daphni Meeting: Feb 3, 2026
-              </span>
             </div>
           </div>
         </div>

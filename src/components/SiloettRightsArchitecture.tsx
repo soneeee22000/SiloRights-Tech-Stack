@@ -1,25 +1,51 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
-  Database, Server, Globe, Shield, Zap, FileText,
-  CheckCircle, ArrowRight, ArrowDown, Layers, Code,
-  Lock, Cloud, CreditCard, Search, FileCheck,
-  GitBranch, Network, Box, Cpu, HardDrive, Radio,
-  Users, Building, Sparkles, TrendingUp, AlertTriangle,
-  Play, ChevronRight, ChevronDown, ExternalLink, Copy
-} from 'lucide-react';
+  Database,
+  Server,
+  Globe,
+  Shield,
+  Zap,
+  FileText,
+  CheckCircle,
+  ArrowRight,
+  ArrowDown,
+  Layers,
+  Code,
+  Lock,
+  Cloud,
+  CreditCard,
+  Search,
+  FileCheck,
+  GitBranch,
+  Network,
+  Box,
+  Cpu,
+  HardDrive,
+  Radio,
+  Users,
+  Building,
+  Sparkles,
+  TrendingUp,
+  AlertTriangle,
+  Play,
+  ChevronRight,
+  ChevronDown,
+  ExternalLink,
+  Copy,
+} from "lucide-react";
 
 // Custom EU-themed color tokens
 const colors = {
-  euBlue: '#003399',
-  euGold: '#FFCC00',
-  deepNavy: '#0A1628',
-  slate: '#1E293B',
-  accent: '#3B82F6',
-  success: '#10B981',
-  warning: '#F59E0B',
-  danger: '#EF4444'
+  euBlue: "#003399",
+  euGold: "#FFCC00",
+  deepNavy: "#0A1628",
+  slate: "#1E293B",
+  accent: "#3B82F6",
+  success: "#10B981",
+  warning: "#F59E0B",
+  danger: "#EF4444",
 };
 
 interface Component {
@@ -85,11 +111,15 @@ interface ScalabilityMetric {
 }
 
 const SiloettRightsArchitecture = () => {
-  const [activeSection, setActiveSection] = useState('overview');
+  const [activeSection, setActiveSection] = useState("overview");
   const [activeLayer, setActiveLayer] = useState<string | null>(null);
   const [showDataFlow, setShowDataFlow] = useState(false);
   const [showAPIDemo, setShowAPIDemo] = useState(false);
-  const [animatedStats, setAnimatedStats] = useState({ assets: 0, licenses: 0, compliance: 0 });
+  const [animatedStats, setAnimatedStats] = useState({
+    assets: 0,
+    licenses: 0,
+    compliance: 0,
+  });
   const [copiedEndpoint, setCopiedEndpoint] = useState<string | null>(null);
 
   // Animate stats on mount
@@ -101,363 +131,527 @@ const SiloettRightsArchitecture = () => {
   }, []);
 
   const sections = [
-    { id: 'overview', label: 'Architecture Overview', icon: Layers },
-    { id: 'layers', label: 'Layer Deep-Dive', icon: Box },
-    { id: 'dataflow', label: 'Data Flow', icon: GitBranch },
-    { id: 'api', label: 'API Design', icon: Code },
-    { id: 'security', label: 'Security & Compliance', icon: Shield },
-    { id: 'scalability', label: 'Scalability', icon: TrendingUp },
-    { id: 'stack', label: 'Tech Stack', icon: Cpu }
+    { id: "overview", label: "Architecture Overview", icon: Layers },
+    { id: "layers", label: "Layer Deep-Dive", icon: Box },
+    { id: "dataflow", label: "Data Flow", icon: GitBranch },
+    { id: "api", label: "API Design", icon: Code },
+    { id: "security", label: "Security & Compliance", icon: Shield },
+    { id: "scalability", label: "Scalability", icon: TrendingUp },
+    { id: "stack", label: "Tech Stack", icon: Cpu },
   ];
 
   const architectureLayers: ArchitectureLayer[] = [
     {
-      id: 'presentation',
+      id: "presentation",
       number: 5,
-      name: 'Presentation Layer',
-      subtitle: 'User Interfaces',
-      color: 'from-blue-500 to-blue-600',
-      borderColor: 'border-blue-500',
+      name: "Presentation Layer",
+      subtitle: "User Interfaces",
+      color: "from-blue-500 to-blue-600",
+      borderColor: "border-blue-500",
       icon: Globe,
-      tech: ['Next.js 14', 'React 18', 'Tailwind CSS', 'shadcn/ui'],
+      tech: ["Next.js 16", "React 19", "Tailwind CSS v4", "shadcn/ui"],
       components: [
-        { name: 'IP Holder Portal', desc: 'Catalog management, rights definition, license approval' },
-        { name: 'AI Company Portal', desc: 'Content discovery, licensing, compliance reports' },
-        { name: 'Admin Dashboard', desc: 'Platform monitoring, user management' }
+        {
+          name: "IP Holder Portal",
+          desc: "Catalog management, rights definition, license approval",
+        },
+        {
+          name: "AI Company Portal",
+          desc: "Content discovery, licensing, compliance reports",
+        },
+        {
+          name: "Admin Dashboard",
+          desc: "Platform monitoring, user management",
+        },
       ],
       responsibilities: [
-        'Server-side rendering for SEO',
-        'Real-time updates via WebSocket',
-        'Responsive design (tablet minimum)',
-        'Accessibility (WCAG 2.1 AA)'
+        "Server-side rendering for SEO",
+        "Real-time updates via WebSocket",
+        "Responsive design (tablet minimum)",
+        "Accessibility (WCAG 2.1 AA)",
       ],
-      metrics: { latency: '<100ms FCP', uptime: '99.9%' }
+      metrics: { latency: "<100ms FCP", uptime: "99.9%" },
     },
     {
-      id: 'api',
+      id: "api",
       number: 4,
-      name: 'API Gateway Layer',
-      subtitle: 'Request Routing & Authentication',
-      color: 'from-purple-500 to-purple-600',
-      borderColor: 'border-purple-500',
+      name: "API Gateway Layer",
+      subtitle: "Request Routing & Authentication",
+      color: "from-purple-500 to-purple-600",
+      borderColor: "border-purple-500",
       icon: Server,
-      tech: ['FastAPI', 'Pydantic v2', 'JWT/OAuth 2.0', 'Rate Limiting'],
+      tech: ["FastAPI", "Pydantic v2", "JWT/OAuth 2.0", "Rate Limiting"],
       components: [
-        { name: 'REST API', desc: '/catalog, /license, /compliance, /auth endpoints' },
-        { name: 'GraphQL Gateway', desc: 'Flexible queries for complex data needs' },
-        { name: 'WebSocket Server', desc: 'Real-time notifications and updates' }
+        {
+          name: "REST API",
+          desc: "/catalog, /license, /compliance, /auth endpoints",
+        },
+        {
+          name: "GraphQL Gateway",
+          desc: "Flexible queries for complex data needs",
+        },
+        {
+          name: "WebSocket Server",
+          desc: "Real-time notifications and updates",
+        },
       ],
       responsibilities: [
-        'Request validation & sanitization',
-        'Authentication & authorization',
-        'Rate limiting (tiered by plan)',
-        'API versioning (/v1, /v2)'
+        "Request validation & sanitization",
+        "Authentication & authorization",
+        "Rate limiting (tiered by plan)",
+        "API versioning (/v1, /v2)",
       ],
-      metrics: { latency: '<200ms p95', throughput: '10K req/s' }
+      metrics: { latency: "<200ms p95", throughput: "10K req/s" },
     },
     {
-      id: 'services',
+      id: "services",
       number: 3,
-      name: 'Service Layer',
-      subtitle: 'Business Logic & Orchestration',
-      color: 'from-green-500 to-green-600',
-      borderColor: 'border-green-500',
+      name: "Service Layer",
+      subtitle: "Business Logic & Orchestration",
+      color: "from-green-500 to-green-600",
+      borderColor: "border-green-500",
       icon: Zap,
-      tech: ['Python 3.11+', 'Celery', 'Redis Pub/Sub', 'Event-Driven'],
+      tech: ["Python 3.12+", "Celery", "Redis Pub/Sub", "Event-Driven"],
       components: [
-        { name: 'Catalog Service', desc: 'Asset indexing, metadata management' },
-        { name: 'License Service', desc: 'Request processing, agreement generation' },
-        { name: 'Compliance Service', desc: 'EU AI Act report generation' },
-        { name: 'Payment Service', desc: 'Stripe Connect integration' },
-        { name: 'Notification Service', desc: 'Email, SMS, webhooks' }
+        {
+          name: "Catalog Service",
+          desc: "Asset indexing, metadata management",
+        },
+        {
+          name: "License Service",
+          desc: "Request processing, agreement generation",
+        },
+        { name: "Compliance Service", desc: "EU AI Act report generation" },
+        { name: "Payment Service", desc: "Stripe Connect integration" },
+        { name: "Notification Service", desc: "Email, SMS, webhooks" },
       ],
       responsibilities: [
-        'Domain-driven design patterns',
-        'CQRS for read/write separation',
-        'Saga pattern for transactions',
-        'Circuit breaker for resilience'
+        "Domain-driven design patterns",
+        "CQRS for read/write separation",
+        "Saga pattern for transactions",
+        "Circuit breaker for resilience",
       ],
-      metrics: { latency: '<50ms', errorRate: '<0.1%' }
+      metrics: { latency: "<50ms", errorRate: "<0.1%" },
     },
     {
-      id: 'data',
+      id: "data",
       number: 2,
-      name: 'Data Layer',
-      subtitle: 'Persistence & Search',
-      color: 'from-orange-500 to-orange-600',
-      borderColor: 'border-orange-500',
+      name: "Data Layer",
+      subtitle: "Persistence & Search",
+      color: "from-orange-500 to-orange-600",
+      borderColor: "border-orange-500",
       icon: Database,
-      tech: ['PostgreSQL 16', 'Meilisearch', 'Redis', 'S3-compatible'],
+      tech: ["PostgreSQL 17", "Meilisearch", "Redis", "S3-compatible"],
       components: [
-        { name: 'PostgreSQL', desc: 'Primary relational database (ACID compliant)' },
-        { name: 'Meilisearch', desc: 'Full-text search engine (EU-created)' },
-        { name: 'Redis', desc: 'Caching, sessions, rate limiting' },
-        { name: 'Object Storage', desc: 'Compliance reports, agreements (Scaleway)' }
+        {
+          name: "PostgreSQL",
+          desc: "Primary relational database (ACID compliant)",
+        },
+        { name: "Meilisearch", desc: "Full-text search engine (EU-created)" },
+        { name: "Redis", desc: "Caching, sessions, rate limiting" },
+        {
+          name: "Object Storage",
+          desc: "Compliance reports, agreements (Scaleway)",
+        },
       ],
       responsibilities: [
-        'Connection pooling (pgBouncer)',
-        'Read replicas for scaling',
-        'Point-in-time recovery',
-        'Automated backups (hourly)'
+        "Connection pooling (pgBouncer)",
+        "Read replicas for scaling",
+        "Point-in-time recovery",
+        "Automated backups (hourly)",
       ],
-      metrics: { queryTime: '<50ms p95', storage: '∞ scalable' }
+      metrics: { queryTime: "<50ms p95", storage: "∞ scalable" },
     },
     {
-      id: 'blockchain',
+      id: "blockchain",
       number: 1,
-      name: 'Blockchain Layer',
-      subtitle: 'Immutable Audit Trail',
-      color: 'from-indigo-500 to-indigo-600',
-      borderColor: 'border-indigo-500',
+      name: "Blockchain Layer",
+      subtitle: "Immutable Audit Trail",
+      color: "from-indigo-500 to-indigo-600",
+      borderColor: "border-indigo-500",
       icon: Lock,
-      tech: ['Polygon (L2)', 'Solidity', 'ethers.js', 'IPFS'],
+      tech: ["Polygon (L2)", "Solidity", "ethers.js v6", "IPFS"],
       components: [
-        { name: 'License Smart Contract', desc: 'Immutable license records' },
-        { name: 'Agreement Hash Storage', desc: 'SHA-256 of full agreements' },
-        { name: 'Audit Trail', desc: 'Timestamped transaction history' }
+        { name: "License Smart Contract", desc: "Immutable license records" },
+        { name: "Agreement Hash Storage", desc: "SHA-256 of full agreements" },
+        { name: "Audit Trail", desc: "Timestamped transaction history" },
       ],
       responsibilities: [
-        'Gas-optimized contracts',
-        'Multi-sig for admin actions',
-        'Event emission for indexing',
-        'Mainnet for production'
+        "Gas-optimized contracts",
+        "Multi-sig for admin actions",
+        "Event emission for indexing",
+        "Mainnet for production",
       ],
-      metrics: { confirmation: '<30s', cost: '<$0.01/tx' }
+      metrics: { confirmation: "<30s", cost: "<$0.01/tx" },
     },
     {
-      id: 'infrastructure',
+      id: "infrastructure",
       number: 0,
-      name: 'Infrastructure Layer',
-      subtitle: 'EU-Sovereign Cloud',
-      color: 'from-slate-600 to-slate-700',
-      borderColor: 'border-slate-500',
+      name: "Infrastructure Layer",
+      subtitle: "EU-Sovereign Cloud",
+      color: "from-slate-600 to-slate-700",
+      borderColor: "border-slate-500",
       icon: Cloud,
-      tech: ['Scaleway (France)', 'Kubernetes', 'Terraform', 'GitOps'],
+      tech: ["Scaleway (France)", "Kubernetes", "Terraform", "GitOps"],
       components: [
-        { name: 'Kubernetes Cluster', desc: 'Container orchestration (Kapsule)' },
-        { name: 'Load Balancer', desc: 'Traffic distribution, SSL termination' },
-        { name: 'CDN', desc: 'Cloudflare for static assets' }
+        {
+          name: "Kubernetes Cluster",
+          desc: "Container orchestration (Kapsule)",
+        },
+        {
+          name: "Load Balancer",
+          desc: "Traffic distribution, SSL termination",
+        },
+        { name: "CDN", desc: "Cloudflare for static assets" },
       ],
       responsibilities: [
-        'Auto-scaling (HPA/VPA)',
-        'Infrastructure as Code',
-        'Blue-green deployments',
-        'Multi-region DR (planned)'
+        "Auto-scaling (HPA/VPA)",
+        "Infrastructure as Code",
+        "Blue-green deployments",
+        "Multi-region DR (planned)",
       ],
-      metrics: { uptime: '99.99%', regions: 'EU (Paris, AMS)' }
-    }
+      metrics: { uptime: "99.99%", regions: "EU (Paris, AMS)" },
+    },
   ];
 
   const dataFlowSteps: DataFlowStep[] = [
     {
       id: 1,
-      actor: 'IP Holder',
-      action: 'Uploads Catalog Metadata',
-      target: 'API Gateway',
-      data: 'CSV/JSON with 500+ assets',
-      color: 'blue'
+      actor: "IP Holder",
+      action: "Uploads Catalog Metadata",
+      target: "API Gateway",
+      data: "CSV/JSON with 500+ assets",
+      color: "blue",
     },
     {
       id: 2,
-      actor: 'API Gateway',
-      action: 'Validates & Routes',
-      target: 'Catalog Service',
-      data: 'Authenticated request + payload',
-      color: 'purple'
+      actor: "API Gateway",
+      action: "Validates & Routes",
+      target: "Catalog Service",
+      data: "Authenticated request + payload",
+      color: "purple",
     },
     {
       id: 3,
-      actor: 'Catalog Service',
-      action: 'Processes & Indexes',
-      target: 'PostgreSQL + Meilisearch',
-      data: 'Normalized records + search index',
-      color: 'green'
+      actor: "Catalog Service",
+      action: "Processes & Indexes",
+      target: "PostgreSQL + Meilisearch",
+      data: "Normalized records + search index",
+      color: "green",
     },
     {
       id: 4,
-      actor: 'AI Company',
-      action: 'Searches Catalog',
-      target: 'Search Engine',
+      actor: "AI Company",
+      action: "Searches Catalog",
+      target: "Search Engine",
       data: 'Query: "documentary 4K Europe"',
-      color: 'orange'
+      color: "orange",
     },
     {
       id: 5,
-      actor: 'AI Company',
-      action: 'Requests License',
-      target: 'License Service',
-      data: 'Asset IDs + intended use + territory',
-      color: 'green'
+      actor: "AI Company",
+      action: "Requests License",
+      target: "License Service",
+      data: "Asset IDs + intended use + territory",
+      color: "green",
     },
     {
       id: 6,
-      actor: 'IP Holder',
-      action: 'Approves Request',
-      target: 'License Service',
-      data: 'Approval + optional notes',
-      color: 'blue'
+      actor: "IP Holder",
+      action: "Approves Request",
+      target: "License Service",
+      data: "Approval + optional notes",
+      color: "blue",
     },
     {
       id: 7,
-      actor: 'License Service',
-      action: 'Records on Blockchain',
-      target: 'Polygon Network',
-      data: 'Agreement hash + parties + timestamp',
-      color: 'indigo'
+      actor: "License Service",
+      action: "Records on Blockchain",
+      target: "Polygon Network",
+      data: "Agreement hash + parties + timestamp",
+      color: "indigo",
     },
     {
       id: 8,
-      actor: 'Compliance Service',
-      action: 'Generates Report',
-      target: 'AI Company',
-      data: 'EU AI Act compliant PDF/JSON/XML',
-      color: 'green'
-    }
+      actor: "Compliance Service",
+      action: "Generates Report",
+      target: "AI Company",
+      data: "EU AI Act compliant PDF/JSON/XML",
+      color: "green",
+    },
   ];
 
   const apiEndpoints: ApiCategory[] = [
     {
-      category: 'Authentication',
+      category: "Authentication",
       endpoints: [
-        { method: 'POST', path: '/v1/auth/register', desc: 'Register new user' },
-        { method: 'POST', path: '/v1/auth/login', desc: 'Authenticate & get JWT' },
-        { method: 'POST', path: '/v1/auth/refresh', desc: 'Refresh access token' }
-      ]
+        {
+          method: "POST",
+          path: "/v1/auth/register",
+          desc: "Register new user",
+        },
+        {
+          method: "POST",
+          path: "/v1/auth/login",
+          desc: "Authenticate & get JWT",
+        },
+        {
+          method: "POST",
+          path: "/v1/auth/refresh",
+          desc: "Refresh access token",
+        },
+      ],
     },
     {
-      category: 'Catalog Management',
+      category: "Catalog Management",
       endpoints: [
-        { method: 'POST', path: '/v1/catalog/upload', desc: 'Upload catalog metadata (IP Holder)' },
-        { method: 'GET', path: '/v1/catalog/my-assets', desc: 'List holder\'s assets' },
-        { method: 'PUT', path: '/v1/catalog/assets/{id}', desc: 'Update asset terms' },
-        { method: 'DELETE', path: '/v1/catalog/assets/{id}', desc: 'Archive asset' }
-      ]
+        {
+          method: "POST",
+          path: "/v1/catalog/upload",
+          desc: "Upload catalog metadata (IP Holder)",
+        },
+        {
+          method: "GET",
+          path: "/v1/catalog/my-assets",
+          desc: "List holder's assets",
+        },
+        {
+          method: "PUT",
+          path: "/v1/catalog/assets/{id}",
+          desc: "Update asset terms",
+        },
+        {
+          method: "DELETE",
+          path: "/v1/catalog/assets/{id}",
+          desc: "Archive asset",
+        },
+      ],
     },
     {
-      category: 'Catalog Discovery',
+      category: "Catalog Discovery",
       endpoints: [
-        { method: 'GET', path: '/v1/catalog/search', desc: 'Search available content (AI Company)' },
-        { method: 'GET', path: '/v1/catalog/assets/{id}', desc: 'Get asset details' }
-      ]
+        {
+          method: "GET",
+          path: "/v1/catalog/search",
+          desc: "Search available content (AI Company)",
+        },
+        {
+          method: "GET",
+          path: "/v1/catalog/assets/{id}",
+          desc: "Get asset details",
+        },
+      ],
     },
     {
-      category: 'Licensing',
+      category: "Licensing",
       endpoints: [
-        { method: 'POST', path: '/v1/license/request', desc: 'Request license for assets' },
-        { method: 'GET', path: '/v1/license/requests', desc: 'List license requests' },
-        { method: 'PUT', path: '/v1/license/requests/{id}/approve', desc: 'Approve request (IP Holder)' },
-        { method: 'PUT', path: '/v1/license/requests/{id}/reject', desc: 'Reject request (IP Holder)' }
-      ]
+        {
+          method: "POST",
+          path: "/v1/license/request",
+          desc: "Request license for assets",
+        },
+        {
+          method: "GET",
+          path: "/v1/license/requests",
+          desc: "List license requests",
+        },
+        {
+          method: "PUT",
+          path: "/v1/license/requests/{id}/approve",
+          desc: "Approve request (IP Holder)",
+        },
+        {
+          method: "PUT",
+          path: "/v1/license/requests/{id}/reject",
+          desc: "Reject request (IP Holder)",
+        },
+      ],
     },
     {
-      category: 'Compliance',
+      category: "Compliance",
       endpoints: [
-        { method: 'GET', path: '/v1/compliance/report', desc: 'Generate EU AI Act report' },
-        { method: 'GET', path: '/v1/compliance/summary', desc: 'Get compliance summary stats' }
-      ]
-    }
+        {
+          method: "GET",
+          path: "/v1/compliance/report",
+          desc: "Generate EU AI Act report",
+        },
+        {
+          method: "GET",
+          path: "/v1/compliance/summary",
+          desc: "Get compliance summary stats",
+        },
+      ],
+    },
   ];
 
   const techStackCategories: TechStackCategory[] = [
     {
-      category: 'Frontend',
+      category: "Frontend",
       items: [
-        { name: 'Next.js 14', purpose: 'React framework with SSR', why: 'Performance, SEO, great DX' },
-        { name: 'Tailwind CSS', purpose: 'Utility-first styling', why: 'Rapid development' },
-        { name: 'shadcn/ui', purpose: 'Component library', why: 'Accessible, customizable' },
-        { name: 'Zustand', purpose: 'State management', why: 'Lightweight, TypeScript-friendly' }
-      ]
+        {
+          name: "Next.js 16",
+          purpose: "React framework with SSR",
+          why: "Performance, SEO, great DX",
+        },
+        {
+          name: "Tailwind CSS v4",
+          purpose: "Utility-first styling",
+          why: "Rapid development",
+        },
+        {
+          name: "shadcn/ui",
+          purpose: "Component library",
+          why: "Accessible, customizable",
+        },
+        {
+          name: "Zustand",
+          purpose: "State management",
+          why: "Lightweight, TypeScript-friendly",
+        },
+      ],
     },
     {
-      category: 'Backend',
+      category: "Backend",
       items: [
-        { name: 'FastAPI', purpose: 'Python web framework', why: 'Async, auto-docs, type hints' },
-        { name: 'SQLAlchemy 2.0', purpose: 'ORM', why: 'Async support, mature' },
-        { name: 'Celery', purpose: 'Task queue', why: 'Distributed job processing' },
-        { name: 'Pydantic v2', purpose: 'Validation', why: 'Fast, type-safe schemas' }
-      ]
+        {
+          name: "FastAPI",
+          purpose: "Python web framework",
+          why: "Async, auto-docs, type hints",
+        },
+        {
+          name: "SQLAlchemy 2.0",
+          purpose: "ORM",
+          why: "Async support, mature",
+        },
+        {
+          name: "Celery",
+          purpose: "Task queue",
+          why: "Distributed job processing",
+        },
+        {
+          name: "Pydantic v2",
+          purpose: "Validation",
+          why: "Fast, type-safe schemas",
+        },
+      ],
     },
     {
-      category: 'Database',
+      category: "Database",
       items: [
-        { name: 'PostgreSQL 16', purpose: 'Primary database', why: 'Reliable, EU-hostable, JSONB' },
-        { name: 'Meilisearch', purpose: 'Search engine', why: 'EU-created, fast, simple' },
-        { name: 'Redis', purpose: 'Cache/sessions', why: 'Standard, performant' }
-      ]
+        {
+          name: "PostgreSQL 17",
+          purpose: "Primary database",
+          why: "Reliable, EU-hostable, JSONB",
+        },
+        {
+          name: "Meilisearch",
+          purpose: "Search engine",
+          why: "EU-created, fast, simple",
+        },
+        {
+          name: "Redis",
+          purpose: "Cache/sessions",
+          why: "Standard, performant",
+        },
+      ],
     },
     {
-      category: 'Infrastructure',
+      category: "Infrastructure",
       items: [
-        { name: 'Scaleway', purpose: 'Cloud provider', why: 'EU sovereign, GDPR-native' },
-        { name: 'Kubernetes', purpose: 'Container orchestration', why: 'Scalable, portable' },
-        { name: 'Terraform', purpose: 'IaC', why: 'Reproducible infrastructure' },
-        { name: 'GitHub Actions', purpose: 'CI/CD', why: 'Industry standard' }
-      ]
+        {
+          name: "Scaleway",
+          purpose: "Cloud provider",
+          why: "EU sovereign, GDPR-native",
+        },
+        {
+          name: "Kubernetes",
+          purpose: "Container orchestration",
+          why: "Scalable, portable",
+        },
+        {
+          name: "Terraform",
+          purpose: "IaC",
+          why: "Reproducible infrastructure",
+        },
+        { name: "GitHub Actions", purpose: "CI/CD", why: "Industry standard" },
+      ],
     },
     {
-      category: 'Blockchain',
+      category: "Blockchain",
       items: [
-        { name: 'Polygon', purpose: 'Ethereum L2', why: 'Low cost, fast, mature tooling' },
-        { name: 'Solidity', purpose: 'Smart contracts', why: 'Industry standard' },
-        { name: 'ethers.js', purpose: 'Blockchain SDK', why: 'Well-documented' }
-      ]
-    }
+        {
+          name: "Polygon",
+          purpose: "Ethereum L2",
+          why: "Low cost, fast, mature tooling",
+        },
+        {
+          name: "Solidity",
+          purpose: "Smart contracts",
+          why: "Industry standard",
+        },
+        {
+          name: "ethers.js v6",
+          purpose: "Blockchain SDK",
+          why: "Well-documented",
+        },
+      ],
+    },
   ];
 
   const securityFeatures: SecurityFeature[] = [
     {
-      category: 'Authentication & Authorization',
+      category: "Authentication & Authorization",
       icon: Lock,
       features: [
-        'JWT with RS256 signing',
-        'OAuth 2.0 / OpenID Connect',
-        'Role-based access control (RBAC)',
-        'Multi-factor authentication (MFA)',
-        'API key management for AI companies'
-      ]
+        "JWT with RS256 signing",
+        "OAuth 2.0 / OpenID Connect",
+        "Role-based access control (RBAC)",
+        "Multi-factor authentication (MFA)",
+        "API key management for AI companies",
+      ],
     },
     {
-      category: 'Data Protection',
+      category: "Data Protection",
       icon: Shield,
       features: [
-        'Encryption at rest (AES-256)',
-        'Encryption in transit (TLS 1.3)',
-        'GDPR-compliant data handling',
-        'EU-sovereign infrastructure',
-        'Data residency controls'
-      ]
+        "Encryption at rest (AES-256)",
+        "Encryption in transit (TLS 1.3)",
+        "GDPR-compliant data handling",
+        "EU-sovereign infrastructure",
+        "Data residency controls",
+      ],
     },
     {
-      category: 'Compliance',
+      category: "Compliance",
       icon: FileCheck,
       features: [
-        'EU AI Act Article 53 compliance',
-        'ISO 27001 aligned processes',
-        'SOC 2 Type II (planned)',
-        'Automated audit trails',
-        'Immutable blockchain records'
-      ]
+        "EU AI Act Article 53 compliance",
+        "ISO 27001 aligned processes",
+        "SOC 2 Type II (planned)",
+        "Automated audit trails",
+        "Immutable blockchain records",
+      ],
     },
     {
-      category: 'Infrastructure Security',
+      category: "Infrastructure Security",
       icon: Cloud,
       features: [
-        'Network isolation (VPC)',
-        'WAF protection',
-        'DDoS mitigation',
-        'Secrets management (Vault)',
-        'Container scanning'
-      ]
-    }
+        "Network isolation (VPC)",
+        "WAF protection",
+        "DDoS mitigation",
+        "Secrets management (Vault)",
+        "Container scanning",
+      ],
+    },
   ];
 
   const scalabilityMetrics: ScalabilityMetric[] = [
-    { label: 'Peak Throughput', value: '10,000 req/s', icon: Zap },
-    { label: 'Database Connections', value: '1,000 pooled', icon: Database },
-    { label: 'Search Index Size', value: '100M documents', icon: Search },
-    { label: 'Auto-scaling Range', value: '2-50 pods', icon: Server },
-    { label: 'Global CDN Nodes', value: '200+', icon: Globe },
-    { label: 'Blockchain TPS', value: '7,000 (Polygon)', icon: Lock }
+    { label: "Peak Throughput", value: "10,000 req/s", icon: Zap },
+    { label: "Database Connections", value: "1,000 pooled", icon: Database },
+    { label: "Search Index Size", value: "100M documents", icon: Search },
+    { label: "Auto-scaling Range", value: "2-50 pods", icon: Server },
+    { label: "Global CDN Nodes", value: "200+", icon: Globe },
+    { label: "Blockchain TPS", value: "7,000 (Polygon)", icon: Lock },
   ];
 
   const copyToClipboard = (text: string, id: string) => {
@@ -468,13 +662,15 @@ const SiloettRightsArchitecture = () => {
 
   const renderMethodBadge = (method: string) => {
     const methodColors: Record<string, string> = {
-      GET: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
-      POST: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-      PUT: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
-      DELETE: 'bg-red-500/20 text-red-400 border-red-500/30'
+      GET: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
+      POST: "bg-blue-500/20 text-blue-400 border-blue-500/30",
+      PUT: "bg-amber-500/20 text-amber-400 border-amber-500/30",
+      DELETE: "bg-red-500/20 text-red-400 border-red-500/30",
     };
     return (
-      <span className={`px-2 py-0.5 text-xs font-mono font-bold rounded border ${methodColors[method]}`}>
+      <span
+        className={`px-2 py-0.5 text-xs font-mono font-bold rounded border ${methodColors[method]}`}
+      >
         {method}
       </span>
     );
@@ -484,10 +680,13 @@ const SiloettRightsArchitecture = () => {
     <div className="min-h-screen bg-[#0A0F1C] text-white overflow-hidden">
       {/* Background Pattern */}
       <div className="fixed inset-0 opacity-30">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(59,130,246,0.15) 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(59,130,246,0.15) 1px, transparent 0)`,
+            backgroundSize: "40px 40px",
+          }}
+        />
       </div>
 
       {/* Header */}
@@ -513,6 +712,10 @@ const SiloettRightsArchitecture = () => {
               </div>
             </div>
             <div className="flex items-center gap-2">
+              <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-xs font-medium text-emerald-400 flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                Frontend MVP Live
+              </span>
               <span className="px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-xs font-medium text-amber-400">
                 EU AI Act Ready
               </span>
@@ -537,8 +740,8 @@ const SiloettRightsArchitecture = () => {
                   onClick={() => setActiveSection(section.id)}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
                     isActive
-                      ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-                      : 'text-slate-400 hover:text-white hover:bg-white/5'
+                      ? "bg-blue-500/20 text-blue-400 border border-blue-500/30"
+                      : "text-slate-400 hover:text-white hover:bg-white/5"
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -580,13 +783,16 @@ const SiloettRightsArchitecture = () => {
         {/* Main Content */}
         <main className="flex-1 p-8 min-h-[calc(100vh-73px)]">
           {/* Overview Section */}
-          {activeSection === 'overview' && (
+          {activeSection === "overview" && (
             <div className="space-y-8 animate-fadeIn">
               <div>
-                <h2 className="text-3xl font-bold mb-2">System Architecture Overview</h2>
+                <h2 className="text-3xl font-bold mb-2">
+                  System Architecture Overview
+                </h2>
                 <p className="text-slate-400 max-w-3xl">
-                  SILOETT Rights is built as a 6-layer microservices architecture, designed for
-                  EU sovereignty, horizontal scalability, and EU AI Act compliance from day one.
+                  SILOETT Rights is built as a 6-layer microservices
+                  architecture, designed for EU sovereignty, horizontal
+                  scalability, and EU AI Act compliance from day one.
                 </p>
               </div>
 
@@ -597,11 +803,11 @@ const SiloettRightsArchitecture = () => {
                     onClick={() => setShowDataFlow(!showDataFlow)}
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                       showDataFlow
-                        ? 'bg-blue-500 text-white'
-                        : 'bg-white/5 text-slate-400 hover:bg-white/10'
+                        ? "bg-blue-500 text-white"
+                        : "bg-white/5 text-slate-400 hover:bg-white/10"
                     }`}
                   >
-                    {showDataFlow ? 'Hide' : 'Show'} Data Flow
+                    {showDataFlow ? "Hide" : "Show"} Data Flow
                   </button>
                 </div>
 
@@ -612,7 +818,9 @@ const SiloettRightsArchitecture = () => {
                     return (
                       <div key={layer.id}>
                         <button
-                          onClick={() => setActiveLayer(isExpanded ? null : layer.id)}
+                          onClick={() =>
+                            setActiveLayer(isExpanded ? null : layer.id)
+                          }
                           className={`w-full transition-all duration-300 rounded-xl p-5 border ${
                             isExpanded
                               ? `bg-gradient-to-r ${layer.color} border-transparent shadow-lg`
@@ -620,68 +828,104 @@ const SiloettRightsArchitecture = () => {
                           }`}
                         >
                           <div className="flex items-center gap-4">
-                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                              isExpanded ? 'bg-white/20' : `bg-gradient-to-br ${layer.color}`
-                            }`}>
+                            <div
+                              className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                                isExpanded
+                                  ? "bg-white/20"
+                                  : `bg-gradient-to-br ${layer.color}`
+                              }`}
+                            >
                               <Icon className="w-5 h-5 text-white" />
                             </div>
                             <div className="flex-1 text-left">
                               <div className="flex items-center gap-3">
-                                <span className={`text-xs font-mono px-2 py-0.5 rounded ${
-                                  isExpanded ? 'bg-white/20' : 'bg-white/10'
-                                }`}>
+                                <span
+                                  className={`text-xs font-mono px-2 py-0.5 rounded ${
+                                    isExpanded ? "bg-white/20" : "bg-white/10"
+                                  }`}
+                                >
                                   L{layer.number}
                                 </span>
                                 <h3 className="font-semibold">{layer.name}</h3>
                               </div>
-                              <p className={`text-sm ${isExpanded ? 'text-white/80' : 'text-slate-400'}`}>
+                              <p
+                                className={`text-sm ${isExpanded ? "text-white/80" : "text-slate-400"}`}
+                              >
                                 {layer.subtitle}
                               </p>
                             </div>
                             <div className="flex gap-2">
                               {layer.tech.slice(0, 3).map((tech, i) => (
-                                <span key={i} className={`text-xs px-2 py-1 rounded ${
-                                  isExpanded ? 'bg-white/20' : 'bg-white/5'
-                                }`}>
+                                <span
+                                  key={i}
+                                  className={`text-xs px-2 py-1 rounded ${
+                                    isExpanded ? "bg-white/20" : "bg-white/5"
+                                  }`}
+                                >
                                   {tech}
                                 </span>
                               ))}
                             </div>
-                            <ChevronDown className={`w-5 h-5 transition-transform ${
-                              isExpanded ? 'rotate-180' : ''
-                            }`} />
+                            <ChevronDown
+                              className={`w-5 h-5 transition-transform ${
+                                isExpanded ? "rotate-180" : ""
+                              }`}
+                            />
                           </div>
 
                           {isExpanded && (
                             <div className="mt-6 pt-6 border-t border-white/20 grid grid-cols-2 gap-6 text-left">
                               <div>
-                                <h4 className="text-sm font-semibold mb-3 text-white/90">Components</h4>
+                                <h4 className="text-sm font-semibold mb-3 text-white/90">
+                                  Components
+                                </h4>
                                 <div className="space-y-2">
                                   {layer.components.map((comp, i) => (
-                                    <div key={i} className="bg-white/10 rounded-lg p-3">
-                                      <div className="font-medium text-sm">{comp.name}</div>
-                                      <div className="text-xs text-white/70">{comp.desc}</div>
+                                    <div
+                                      key={i}
+                                      className="bg-white/10 rounded-lg p-3"
+                                    >
+                                      <div className="font-medium text-sm">
+                                        {comp.name}
+                                      </div>
+                                      <div className="text-xs text-white/70">
+                                        {comp.desc}
+                                      </div>
                                     </div>
                                   ))}
                                 </div>
                               </div>
                               <div>
-                                <h4 className="text-sm font-semibold mb-3 text-white/90">Responsibilities</h4>
+                                <h4 className="text-sm font-semibold mb-3 text-white/90">
+                                  Responsibilities
+                                </h4>
                                 <ul className="space-y-2">
                                   {layer.responsibilities.map((resp, i) => (
-                                    <li key={i} className="flex items-start gap-2 text-sm text-white/80">
+                                    <li
+                                      key={i}
+                                      className="flex items-start gap-2 text-sm text-white/80"
+                                    >
                                       <CheckCircle className="w-4 h-4 mt-0.5 text-white/60" />
                                       {resp}
                                     </li>
                                   ))}
                                 </ul>
                                 <div className="mt-4 flex gap-4">
-                                  {Object.entries(layer.metrics).map(([key, value]) => (
-                                    <div key={key} className="bg-white/10 rounded-lg px-3 py-2">
-                                      <div className="text-xs text-white/60">{key}</div>
-                                      <div className="text-sm font-mono font-bold">{value}</div>
-                                    </div>
-                                  ))}
+                                  {Object.entries(layer.metrics).map(
+                                    ([key, value]) => (
+                                      <div
+                                        key={key}
+                                        className="bg-white/10 rounded-lg px-3 py-2"
+                                      >
+                                        <div className="text-xs text-white/60">
+                                          {key}
+                                        </div>
+                                        <div className="text-sm font-mono font-bold">
+                                          {value}
+                                        </div>
+                                      </div>
+                                    ),
+                                  )}
                                 </div>
                               </div>
                             </div>
@@ -690,9 +934,13 @@ const SiloettRightsArchitecture = () => {
 
                         {index < architectureLayers.length - 1 && (
                           <div className="flex justify-center py-2">
-                            <ArrowDown className={`w-5 h-5 ${
-                              showDataFlow ? 'text-blue-400 animate-pulse' : 'text-slate-600'
-                            }`} />
+                            <ArrowDown
+                              className={`w-5 h-5 ${
+                                showDataFlow
+                                  ? "text-blue-400 animate-pulse"
+                                  : "text-slate-600"
+                              }`}
+                            />
                           </div>
                         )}
                       </div>
@@ -705,26 +953,31 @@ const SiloettRightsArchitecture = () => {
               <div className="grid grid-cols-3 gap-6">
                 {[
                   {
-                    title: 'Metadata-First',
-                    desc: 'IP never leaves holder custody. We index metadata only, minimizing liability.',
+                    title: "Metadata-First",
+                    desc: "IP never leaves holder custody. We index metadata only, minimizing liability.",
                     icon: FileText,
-                    color: 'blue'
+                    color: "blue",
                   },
                   {
-                    title: 'EU Sovereign',
-                    desc: 'All infrastructure hosted in EU data centers (Scaleway France).',
+                    title: "EU Sovereign",
+                    desc: "All infrastructure hosted in EU data centers (Scaleway France).",
                     icon: Shield,
-                    color: 'amber'
+                    color: "amber",
                   },
                   {
-                    title: 'API-First',
-                    desc: 'AI companies integrate programmatically. OpenAPI spec for all endpoints.',
+                    title: "API-First",
+                    desc: "AI companies integrate programmatically. OpenAPI spec for all endpoints.",
                     icon: Code,
-                    color: 'emerald'
-                  }
+                    color: "emerald",
+                  },
                 ].map((decision, i) => (
-                  <div key={i} className={`bg-gradient-to-br from-${decision.color}-500/10 to-transparent rounded-xl p-6 border border-${decision.color}-500/20`}>
-                    <decision.icon className={`w-8 h-8 text-${decision.color}-400 mb-4`} />
+                  <div
+                    key={i}
+                    className={`bg-gradient-to-br from-${decision.color}-500/10 to-transparent rounded-xl p-6 border border-${decision.color}-500/20`}
+                  >
+                    <decision.icon
+                      className={`w-8 h-8 text-${decision.color}-400 mb-4`}
+                    />
                     <h3 className="font-semibold mb-2">{decision.title}</h3>
                     <p className="text-sm text-slate-400">{decision.desc}</p>
                   </div>
@@ -734,12 +987,13 @@ const SiloettRightsArchitecture = () => {
           )}
 
           {/* Layer Deep-Dive Section */}
-          {activeSection === 'layers' && (
+          {activeSection === "layers" && (
             <div className="space-y-8 animate-fadeIn">
               <div>
                 <h2 className="text-3xl font-bold mb-2">Layer Deep-Dive</h2>
                 <p className="text-slate-400">
-                  Click on any layer to explore its components, technologies, and responsibilities.
+                  Click on any layer to explore its components, technologies,
+                  and responsibilities.
                 </p>
               </div>
 
@@ -754,7 +1008,9 @@ const SiloettRightsArchitecture = () => {
                       <div className={`h-2 bg-gradient-to-r ${layer.color}`} />
                       <div className="p-6">
                         <div className="flex items-center gap-4 mb-4">
-                          <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${layer.color} flex items-center justify-center`}>
+                          <div
+                            className={`w-12 h-12 rounded-xl bg-gradient-to-br ${layer.color} flex items-center justify-center`}
+                          >
                             <Icon className="w-6 h-6 text-white" />
                           </div>
                           <div>
@@ -769,7 +1025,10 @@ const SiloettRightsArchitecture = () => {
 
                         <div className="flex flex-wrap gap-2 mb-4">
                           {layer.tech.map((tech, i) => (
-                            <span key={i} className="text-xs px-2 py-1 rounded bg-white/5 text-slate-300">
+                            <span
+                              key={i}
+                              className="text-xs px-2 py-1 rounded bg-white/5 text-slate-300"
+                            >
                               {tech}
                             </span>
                           ))}
@@ -777,9 +1036,14 @@ const SiloettRightsArchitecture = () => {
 
                         <div className="space-y-2">
                           {layer.components.slice(0, 3).map((comp, i) => (
-                            <div key={i} className="flex items-center gap-2 text-sm">
+                            <div
+                              key={i}
+                              className="flex items-center gap-2 text-sm"
+                            >
                               <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                              <span className="text-slate-300">{comp.name}</span>
+                              <span className="text-slate-300">
+                                {comp.name}
+                              </span>
                             </div>
                           ))}
                         </div>
@@ -787,8 +1051,12 @@ const SiloettRightsArchitecture = () => {
                         <div className="mt-4 pt-4 border-t border-white/10 flex gap-4">
                           {Object.entries(layer.metrics).map(([key, value]) => (
                             <div key={key}>
-                              <div className="text-xs text-slate-500">{key}</div>
-                              <div className="text-sm font-mono font-semibold text-emerald-400">{value}</div>
+                              <div className="text-xs text-slate-500">
+                                {key}
+                              </div>
+                              <div className="text-sm font-mono font-semibold text-emerald-400">
+                                {value}
+                              </div>
                             </div>
                           ))}
                         </div>
@@ -801,12 +1069,15 @@ const SiloettRightsArchitecture = () => {
           )}
 
           {/* Data Flow Section */}
-          {activeSection === 'dataflow' && (
+          {activeSection === "dataflow" && (
             <div className="space-y-8 animate-fadeIn">
               <div>
-                <h2 className="text-3xl font-bold mb-2">Data Flow Architecture</h2>
+                <h2 className="text-3xl font-bold mb-2">
+                  Data Flow Architecture
+                </h2>
                 <p className="text-slate-400">
-                  Complete licensing workflow from catalog upload to compliance report generation.
+                  Complete licensing workflow from catalog upload to compliance
+                  report generation.
                 </p>
               </div>
 
@@ -814,29 +1085,39 @@ const SiloettRightsArchitecture = () => {
                 <div className="space-y-4">
                   {dataFlowSteps.map((step, index) => {
                     const colorMap: Record<string, string> = {
-                      blue: 'from-blue-500 to-blue-600',
-                      purple: 'from-purple-500 to-purple-600',
-                      green: 'from-emerald-500 to-emerald-600',
-                      orange: 'from-orange-500 to-orange-600',
-                      indigo: 'from-indigo-500 to-indigo-600'
+                      blue: "from-blue-500 to-blue-600",
+                      purple: "from-purple-500 to-purple-600",
+                      green: "from-emerald-500 to-emerald-600",
+                      orange: "from-orange-500 to-orange-600",
+                      indigo: "from-indigo-500 to-indigo-600",
                     };
                     return (
                       <div key={step.id} className="flex items-center gap-4">
-                        <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${colorMap[step.color]} flex items-center justify-center font-bold text-sm shadow-lg`}>
+                        <div
+                          className={`w-10 h-10 rounded-full bg-gradient-to-br ${colorMap[step.color]} flex items-center justify-center font-bold text-sm shadow-lg`}
+                        >
                           {step.id}
                         </div>
                         <div className="flex-1 bg-slate-800/50 rounded-xl p-4 border border-white/5">
                           <div className="flex items-center justify-between mb-2">
                             <div className="flex items-center gap-3">
-                              <span className="font-semibold text-white">{step.actor}</span>
+                              <span className="font-semibold text-white">
+                                {step.actor}
+                              </span>
                               <ArrowRight className="w-4 h-4 text-slate-500" />
-                              <span className="text-slate-400">{step.target}</span>
+                              <span className="text-slate-400">
+                                {step.target}
+                              </span>
                             </div>
-                            <span className={`text-xs px-2 py-1 rounded bg-gradient-to-r ${colorMap[step.color]} bg-opacity-20`}>
+                            <span
+                              className={`text-xs px-2 py-1 rounded bg-gradient-to-r ${colorMap[step.color]} bg-opacity-20`}
+                            >
                               {step.action}
                             </span>
                           </div>
-                          <p className="text-sm text-slate-500 font-mono">{step.data}</p>
+                          <p className="text-sm text-slate-500 font-mono">
+                            {step.data}
+                          </p>
                         </div>
                       </div>
                     );
@@ -881,12 +1162,13 @@ const SiloettRightsArchitecture = () => {
           )}
 
           {/* API Design Section */}
-          {activeSection === 'api' && (
+          {activeSection === "api" && (
             <div className="space-y-8 animate-fadeIn">
               <div>
                 <h2 className="text-3xl font-bold mb-2">API Design</h2>
                 <p className="text-slate-400">
-                  RESTful API with OpenAPI 3.0 specification. All endpoints require JWT authentication.
+                  RESTful API with OpenAPI 3.0 specification. All endpoints
+                  require JWT authentication.
                 </p>
               </div>
 
@@ -911,7 +1193,10 @@ const SiloettRightsArchitecture = () => {
 
               <div className="space-y-6">
                 {apiEndpoints.map((category) => (
-                  <div key={category.category} className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-2xl border border-white/10 overflow-hidden">
+                  <div
+                    key={category.category}
+                    className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-2xl border border-white/10 overflow-hidden"
+                  >
                     <div className="px-6 py-4 border-b border-white/10 bg-white/5">
                       <h3 className="font-semibold">{category.category}</h3>
                     </div>
@@ -919,14 +1204,21 @@ const SiloettRightsArchitecture = () => {
                       {category.endpoints.map((endpoint, i) => {
                         const endpointId = `${category.category}-${i}`;
                         return (
-                          <div key={i} className="px-6 py-4 flex items-center gap-4 hover:bg-white/5 transition-colors group">
+                          <div
+                            key={i}
+                            className="px-6 py-4 flex items-center gap-4 hover:bg-white/5 transition-colors group"
+                          >
                             {renderMethodBadge(endpoint.method)}
                             <code className="flex-1 text-sm font-mono text-slate-300">
                               {endpoint.path}
                             </code>
-                            <span className="text-sm text-slate-500">{endpoint.desc}</span>
+                            <span className="text-sm text-slate-500">
+                              {endpoint.desc}
+                            </span>
                             <button
-                              onClick={() => copyToClipboard(endpoint.path, endpointId)}
+                              onClick={() =>
+                                copyToClipboard(endpoint.path, endpointId)
+                              }
                               className="opacity-0 group-hover:opacity-100 transition-opacity p-2 hover:bg-white/10 rounded"
                             >
                               {copiedEndpoint === endpointId ? (
@@ -951,10 +1243,12 @@ const SiloettRightsArchitecture = () => {
                     <div className="w-3 h-3 rounded-full bg-amber-500" />
                     <div className="w-3 h-3 rounded-full bg-emerald-500" />
                   </div>
-                  <span className="text-xs font-mono text-slate-400">Example Request</span>
+                  <span className="text-xs font-mono text-slate-400">
+                    Example Request
+                  </span>
                 </div>
                 <pre className="p-6 text-sm font-mono text-slate-300 overflow-x-auto">
-{`curl -X POST https://api.siloett.ai/v1/license/request \\
+                  {`curl -X POST https://api.siloett.ai/v1/license/request \\
   -H "Authorization: Bearer <JWT_TOKEN>" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -972,12 +1266,15 @@ const SiloettRightsArchitecture = () => {
           )}
 
           {/* Security Section */}
-          {activeSection === 'security' && (
+          {activeSection === "security" && (
             <div className="space-y-8 animate-fadeIn">
               <div>
-                <h2 className="text-3xl font-bold mb-2">Security & Compliance</h2>
+                <h2 className="text-3xl font-bold mb-2">
+                  Security & Compliance
+                </h2>
                 <p className="text-slate-400">
-                  Enterprise-grade security with EU AI Act compliance built-in from day one.
+                  Enterprise-grade security with EU AI Act compliance built-in
+                  from day one.
                 </p>
               </div>
 
@@ -985,7 +1282,10 @@ const SiloettRightsArchitecture = () => {
                 {securityFeatures.map((category) => {
                   const Icon = category.icon;
                   return (
-                    <div key={category.category} className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-2xl border border-white/10 p-6">
+                    <div
+                      key={category.category}
+                      className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-2xl border border-white/10 p-6"
+                    >
                       <div className="flex items-center gap-3 mb-4">
                         <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
                           <Icon className="w-5 h-5 text-blue-400" />
@@ -994,7 +1294,10 @@ const SiloettRightsArchitecture = () => {
                       </div>
                       <ul className="space-y-2">
                         {category.features.map((feature, i) => (
-                          <li key={i} className="flex items-center gap-2 text-sm text-slate-400">
+                          <li
+                            key={i}
+                            className="flex items-center gap-2 text-sm text-slate-400"
+                          >
                             <CheckCircle className="w-4 h-4 text-emerald-400" />
                             {feature}
                           </li>
@@ -1012,19 +1315,25 @@ const SiloettRightsArchitecture = () => {
                     <FileCheck className="w-8 h-8 text-amber-400" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-2">EU AI Act Compliance (Article 53)</h3>
+                    <h3 className="text-xl font-bold mb-2">
+                      EU AI Act Compliance (Article 53)
+                    </h3>
                     <p className="text-slate-400 mb-4">
-                      Effective August 2, 2026 — GPAI providers must document training data sources.
-                      Penalties up to €15M or 3% of global revenue.
+                      Effective August 2, 2026 — GPAI providers must document
+                      training data sources. Penalties up to €15M or 3% of
+                      global revenue.
                     </p>
                     <div className="grid grid-cols-2 gap-4">
                       {[
-                        'Training data source descriptions',
-                        'Copyrighted content summaries',
-                        'Proof of licensing/legal basis',
-                        'Technical compliance measures'
+                        "Training data source descriptions",
+                        "Copyrighted content summaries",
+                        "Proof of licensing/legal basis",
+                        "Technical compliance measures",
                       ].map((req, i) => (
-                        <div key={i} className="flex items-center gap-2 text-sm">
+                        <div
+                          key={i}
+                          className="flex items-center gap-2 text-sm"
+                        >
                           <CheckCircle className="w-4 h-4 text-amber-400" />
                           <span className="text-slate-300">{req}</span>
                         </div>
@@ -1037,12 +1346,15 @@ const SiloettRightsArchitecture = () => {
           )}
 
           {/* Scalability Section */}
-          {activeSection === 'scalability' && (
+          {activeSection === "scalability" && (
             <div className="space-y-8 animate-fadeIn">
               <div>
-                <h2 className="text-3xl font-bold mb-2">Scalability Architecture</h2>
+                <h2 className="text-3xl font-bold mb-2">
+                  Scalability Architecture
+                </h2>
                 <p className="text-slate-400">
-                  Designed to handle 500K+ assets, 10K+ licenses/year, and peak loads of 10K req/s.
+                  Designed to handle 500K+ assets, 10K+ licenses/year, and peak
+                  loads of 10K req/s.
                 </p>
               </div>
 
@@ -1050,12 +1362,17 @@ const SiloettRightsArchitecture = () => {
                 {scalabilityMetrics.map((metric) => {
                   const Icon = metric.icon;
                   return (
-                    <div key={metric.label} className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-xl border border-white/10 p-6 text-center">
+                    <div
+                      key={metric.label}
+                      className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-xl border border-white/10 p-6 text-center"
+                    >
                       <Icon className="w-8 h-8 mx-auto text-blue-400 mb-3" />
                       <div className="text-2xl font-bold font-mono text-emerald-400 mb-1">
                         {metric.value}
                       </div>
-                      <div className="text-sm text-slate-400">{metric.label}</div>
+                      <div className="text-sm text-slate-400">
+                        {metric.label}
+                      </div>
                     </div>
                   );
                 })}
@@ -1071,19 +1388,31 @@ const SiloettRightsArchitecture = () => {
                   <ul className="space-y-3 text-sm text-slate-400">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5" />
-                      <span><strong className="text-white">Kubernetes HPA</strong> — Auto-scale pods based on CPU/memory</span>
+                      <span>
+                        <strong className="text-white">Kubernetes HPA</strong> —
+                        Auto-scale pods based on CPU/memory
+                      </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5" />
-                      <span><strong className="text-white">Read Replicas</strong> — PostgreSQL replicas for read-heavy queries</span>
+                      <span>
+                        <strong className="text-white">Read Replicas</strong> —
+                        PostgreSQL replicas for read-heavy queries
+                      </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5" />
-                      <span><strong className="text-white">CDN Caching</strong> — Static assets via Cloudflare edge</span>
+                      <span>
+                        <strong className="text-white">CDN Caching</strong> —
+                        Static assets via Cloudflare edge
+                      </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5" />
-                      <span><strong className="text-white">Redis Cluster</strong> — Distributed caching layer</span>
+                      <span>
+                        <strong className="text-white">Redis Cluster</strong> —
+                        Distributed caching layer
+                      </span>
                     </li>
                   </ul>
                 </div>
@@ -1096,19 +1425,31 @@ const SiloettRightsArchitecture = () => {
                   <ul className="space-y-3 text-sm text-slate-400">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5" />
-                      <span><strong className="text-white">CQRS Pattern</strong> — Separate read/write models</span>
+                      <span>
+                        <strong className="text-white">CQRS Pattern</strong> —
+                        Separate read/write models
+                      </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5" />
-                      <span><strong className="text-white">Event Sourcing</strong> — Immutable audit trail</span>
+                      <span>
+                        <strong className="text-white">Event Sourcing</strong> —
+                        Immutable audit trail
+                      </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5" />
-                      <span><strong className="text-white">Celery Workers</strong> — Async job processing</span>
+                      <span>
+                        <strong className="text-white">Celery Workers</strong> —
+                        Async job processing
+                      </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5" />
-                      <span><strong className="text-white">Circuit Breaker</strong> — Graceful degradation</span>
+                      <span>
+                        <strong className="text-white">Circuit Breaker</strong>{" "}
+                        — Graceful degradation
+                      </span>
                     </li>
                   </ul>
                 </div>
@@ -1116,17 +1457,24 @@ const SiloettRightsArchitecture = () => {
 
               {/* Load Distribution */}
               <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-2xl border border-white/10 p-8">
-                <h3 className="font-semibold mb-6">Load Distribution Strategy</h3>
+                <h3 className="font-semibold mb-6">
+                  Load Distribution Strategy
+                </h3>
                 <div className="grid grid-cols-4 gap-4">
                   {[
-                    { label: 'API Gateway', load: '40%', color: 'blue' },
-                    { label: 'Search', load: '30%', color: 'emerald' },
-                    { label: 'Database', load: '20%', color: 'orange' },
-                    { label: 'Blockchain', load: '10%', color: 'indigo' }
+                    { label: "API Gateway", load: "40%", color: "blue" },
+                    { label: "Search", load: "30%", color: "emerald" },
+                    { label: "Database", load: "20%", color: "orange" },
+                    { label: "Blockchain", load: "10%", color: "indigo" },
                   ].map((item) => (
                     <div key={item.label} className="text-center">
-                      <div className="text-2xl font-bold font-mono text-white mb-2">{item.load}</div>
-                      <div className={`h-2 rounded-full bg-${item.color}-500 mb-2`} style={{ width: item.load }} />
+                      <div className="text-2xl font-bold font-mono text-white mb-2">
+                        {item.load}
+                      </div>
+                      <div
+                        className={`h-2 rounded-full bg-${item.color}-500 mb-2`}
+                        style={{ width: item.load }}
+                      />
                       <div className="text-sm text-slate-400">{item.label}</div>
                     </div>
                   ))}
@@ -1136,32 +1484,45 @@ const SiloettRightsArchitecture = () => {
           )}
 
           {/* Tech Stack Section */}
-          {activeSection === 'stack' && (
+          {activeSection === "stack" && (
             <div className="space-y-8 animate-fadeIn">
               <div>
                 <h2 className="text-3xl font-bold mb-2">Technology Stack</h2>
                 <p className="text-slate-400">
-                  Production-ready technologies chosen for EU sovereignty, scalability, and developer experience.
+                  Production-ready technologies chosen for EU sovereignty,
+                  scalability, and developer experience.
                 </p>
               </div>
 
               <div className="space-y-6">
                 {techStackCategories.map((category) => (
-                  <div key={category.category} className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-2xl border border-white/10 overflow-hidden">
+                  <div
+                    key={category.category}
+                    className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-2xl border border-white/10 overflow-hidden"
+                  >
                     <div className="px-6 py-4 border-b border-white/10 bg-white/5">
                       <h3 className="font-semibold">{category.category}</h3>
                     </div>
                     <div className="p-6">
                       <div className="grid grid-cols-2 gap-4">
                         {category.items.map((item) => (
-                          <div key={item.name} className="flex items-start gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
+                          <div
+                            key={item.name}
+                            className="flex items-start gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
+                          >
                             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                               <Sparkles className="w-5 h-5 text-blue-400" />
                             </div>
                             <div className="flex-1">
-                              <h4 className="font-semibold text-white">{item.name}</h4>
-                              <p className="text-sm text-slate-400">{item.purpose}</p>
-                              <p className="text-xs text-emerald-400 mt-1">→ {item.why}</p>
+                              <h4 className="font-semibold text-white">
+                                {item.name}
+                              </h4>
+                              <p className="text-sm text-slate-400">
+                                {item.purpose}
+                              </p>
+                              <p className="text-xs text-emerald-400 mt-1">
+                                → {item.why}
+                              </p>
                             </div>
                           </div>
                         ))}
@@ -1187,24 +1548,40 @@ const SiloettRightsArchitecture = () => {
                     </thead>
                     <tbody className="text-slate-300">
                       <tr className="border-t border-white/5">
-                        <td className="py-3 font-semibold text-white">FastAPI</td>
+                        <td className="py-3 font-semibold text-white">
+                          FastAPI
+                        </td>
                         <td className="py-3">Django, Flask</td>
-                        <td className="py-3 text-emerald-400">Async native, auto-docs, type hints</td>
+                        <td className="py-3 text-emerald-400">
+                          Async native, auto-docs, type hints
+                        </td>
                       </tr>
                       <tr className="border-t border-white/5">
-                        <td className="py-3 font-semibold text-white">Meilisearch</td>
+                        <td className="py-3 font-semibold text-white">
+                          Meilisearch
+                        </td>
                         <td className="py-3">Elasticsearch, Algolia</td>
-                        <td className="py-3 text-emerald-400">EU-created, simple, fast, open-source</td>
+                        <td className="py-3 text-emerald-400">
+                          EU-created, simple, fast, open-source
+                        </td>
                       </tr>
                       <tr className="border-t border-white/5">
-                        <td className="py-3 font-semibold text-white">Polygon</td>
+                        <td className="py-3 font-semibold text-white">
+                          Polygon
+                        </td>
                         <td className="py-3">Ethereum, Solana</td>
-                        <td className="py-3 text-emerald-400">Low cost (&lt; $0.01/tx), fast, mature</td>
+                        <td className="py-3 text-emerald-400">
+                          Low cost (&lt; $0.01/tx), fast, mature
+                        </td>
                       </tr>
                       <tr className="border-t border-white/5">
-                        <td className="py-3 font-semibold text-white">Scaleway</td>
+                        <td className="py-3 font-semibold text-white">
+                          Scaleway
+                        </td>
                         <td className="py-3">AWS, GCP, Azure</td>
-                        <td className="py-3 text-emerald-400">EU sovereign, GDPR-native, Paris DC</td>
+                        <td className="py-3 text-emerald-400">
+                          EU sovereign, GDPR-native, Paris DC
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -1222,7 +1599,7 @@ const SiloettRightsArchitecture = () => {
             <div className="flex items-center gap-4">
               <span>SILOETT Rights — Technical Architecture v1.0</span>
               <span className="text-slate-600">|</span>
-              <span>Last Updated: January 28, 2026</span>
+              <span>Last Updated: February 20, 2026</span>
             </div>
             <div className="flex items-center gap-4">
               <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-xs font-medium text-emerald-400">
@@ -1235,8 +1612,14 @@ const SiloettRightsArchitecture = () => {
 
       <style jsx>{`
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
         .animate-fadeIn {
           animation: fadeIn 0.3s ease-out;

@@ -1,20 +1,60 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import React, { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
-  Shield, Layers, Database, GitBranch, Activity,
-  FileCode, ChevronDown, Menu, X, Sparkles,
-  ExternalLink
-} from 'lucide-react';
+  Shield,
+  Layers,
+  Database,
+  GitBranch,
+  Activity,
+  FileCode,
+  ChevronDown,
+  Menu,
+  X,
+  Sparkles,
+  ExternalLink,
+  Map,
+} from "lucide-react";
 
 const navItems = [
-  { href: '/', label: 'Architecture', icon: Layers, description: 'System overview & layers' },
-  { href: '/adrs', label: 'ADRs', icon: FileCode, description: 'Architecture decisions' },
-  { href: '/database', label: 'Database', icon: Database, description: 'Schema & models' },
-  { href: '/devops', label: 'DevOps', icon: GitBranch, description: 'CI/CD & deployment' },
-  { href: '/monitoring', label: 'Monitoring', icon: Activity, description: 'Observability stack' },
+  {
+    href: "/",
+    label: "Architecture",
+    icon: Layers,
+    description: "System overview & layers",
+  },
+  {
+    href: "/adrs",
+    label: "ADRs",
+    icon: FileCode,
+    description: "Architecture decisions",
+  },
+  {
+    href: "/database",
+    label: "Database",
+    icon: Database,
+    description: "Schema & models",
+  },
+  {
+    href: "/devops",
+    label: "DevOps",
+    icon: GitBranch,
+    description: "CI/CD & deployment",
+  },
+  {
+    href: "/monitoring",
+    label: "Monitoring",
+    icon: Activity,
+    description: "Observability stack",
+  },
+  {
+    href: "/roadmap",
+    label: "Roadmap",
+    icon: Map,
+    description: "Product phases & timeline",
+  },
 ];
 
 export default function Navigation() {
@@ -26,7 +66,10 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-4 hover:opacity-90 transition-opacity">
+          <Link
+            href="/"
+            className="flex items-center gap-4 hover:opacity-90 transition-opacity"
+          >
             <div className="relative">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
                 <Shield className="w-6 h-6 text-white" />
@@ -56,8 +99,8 @@ export default function Navigation() {
                   href={item.href}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
                     isActive
-                      ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-                      : 'text-slate-400 hover:text-white hover:bg-white/5'
+                      ? "bg-blue-500/20 text-blue-400 border border-blue-500/30"
+                      : "text-slate-400 hover:text-white hover:bg-white/5"
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -104,14 +147,16 @@ export default function Navigation() {
                     onClick={() => setMobileMenuOpen(false)}
                     className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
                       isActive
-                        ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-                        : 'text-slate-400 hover:text-white hover:bg-white/5'
+                        ? "bg-blue-500/20 text-blue-400 border border-blue-500/30"
+                        : "text-slate-400 hover:text-white hover:bg-white/5"
                     }`}
                   >
                     <Icon className="w-5 h-5" />
                     <div>
                       <div className="text-sm font-medium">{item.label}</div>
-                      <div className="text-xs text-slate-500">{item.description}</div>
+                      <div className="text-xs text-slate-500">
+                        {item.description}
+                      </div>
                     </div>
                   </Link>
                 );
